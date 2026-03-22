@@ -22,8 +22,11 @@ export class AnimationController {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             this.animatedElements.add(entry.target);
+          } else {
+            // Remove animation when scrolling up to re-trigger on next scroll down
+            entry.target.classList.remove('visible');
+            this.animatedElements.delete(entry.target);
           }
-          // Don't remove visible class - keep elements animated once they've been shown
         });
       },
       {
