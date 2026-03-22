@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Mail, Phone, MapPin, Download, Sparkles } from "lucide-react"
+import { Mail, Phone, MapPin, Download } from "lucide-react"
 import Image from "next/image"
 
 export default function Hero() {
@@ -17,11 +17,9 @@ export default function Hero() {
           <div className="lg:order-1 order-2 text-center lg:text-left w-full max-w-full overflow-hidden">
             <div className="mb-8 scroll-animate w-full max-w-full overflow-hidden">
               <div className="flex items-center justify-center lg:justify-start gap-2 mb-6 flex-wrap max-w-full overflow-hidden">
-                <Sparkles className="h-5 w-5 text-primary flex-shrink-0" />
                 <Badge variant="outline" className="bg-primary/10 border-primary/20 text-primary whitespace-nowrap flex-shrink-0">
                   Available for Work
                 </Badge>
-                <Sparkles className="h-5 w-5 text-primary flex-shrink-0" />
               </div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold gradient-text mb-6 leading-tight break-words w-full max-w-full overflow-hidden">
                 <span className="block w-full max-w-full">IT Support Engineer</span>
@@ -43,24 +41,24 @@ export default function Hero() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-full mx-auto lg:mx-0 scroll-animate overflow-hidden" style={{ animationDelay: "0.4s" }}>
-              <div className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground hover:text-primary transition-colors flex-wrap max-w-full overflow-hidden">
-                <div className="p-2 bg-primary/10 rounded-full flex-shrink-0">
+            <div className="flex flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 max-w-full mx-auto lg:mx-0 scroll-animate overflow-hidden" style={{ animationDelay: "0.4s" }}>
+              <div className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors flex-wrap max-w-full overflow-hidden">
+                <div className="p-2 bg-primary/10 rounded-full flex-shrink-0 flex items-center justify-center">
                   <Phone className="h-4 w-4" />
                 </div>
-                <span className="font-medium text-xs sm:text-sm md:text-base break-words min-w-0 flex-1">+1 (555) 123-4567</span>
+                <span className="font-medium text-xs sm:text-sm md:text-base break-words">+1 (555) 123-4567</span>
               </div>
-              <div className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground hover:text-primary transition-colors flex-wrap max-w-full overflow-hidden">
-                <div className="p-2 bg-primary/10 rounded-full flex-shrink-0">
+              <div className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors flex-wrap max-w-full overflow-hidden">
+                <div className="p-2 bg-primary/10 rounded-full flex-shrink-0 flex items-center justify-center">
                   <Mail className="h-4 w-4" />
                 </div>
-                <span className="font-medium text-xs sm:text-sm md:text-base break-words min-w-0 flex-1">it.support@email.com</span>
+                <span className="font-medium text-xs sm:text-sm md:text-base break-words">it.support@email.com</span>
               </div>
-              <div className="flex items-center justify-center lg:justify-start gap-2 text-muted-foreground hover:text-primary transition-colors flex-wrap max-w-full overflow-hidden">
-                <div className="p-2 bg-primary/10 rounded-full flex-shrink-0">
+              <div className="flex items-center justify-center gap-2 text-muted-foreground hover:text-primary transition-colors flex-wrap max-w-full overflow-hidden">
+                <div className="p-2 bg-primary/10 rounded-full flex-shrink-0 flex items-center justify-center">
                   <MapPin className="h-4 w-4" />
                 </div>
-                <span className="font-medium text-xs sm:text-sm md:text-base break-words min-w-0 flex-1">Your Location</span>
+                <span className="font-medium text-xs sm:text-sm md:text-base break-words">Your Location</span>
               </div>
             </div>
           </div>

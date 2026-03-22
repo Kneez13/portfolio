@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Monitor, Sparkles } from "lucide-react"
+import { Menu, X, Monitor } from "lucide-react"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +24,6 @@ export default function Navigation() {
               <Monitor className="h-5 w-5 text-primary" />
             </div>
             <div className="flex items-center gap-2 min-w-0">
-              <Sparkles className="h-4 w-4 text-primary flex-shrink-0" />
               <span className="text-xl font-bold gradient-text whitespace-nowrap">IT Support Portfolio</span>
             </div>
           </div>

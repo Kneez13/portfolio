@@ -1,4 +1,5 @@
-import { Mail, Phone, Github, Linkedin } from "lucide-react"
+import { Mail, Phone, GitBranch, User } from "lucide-react"
+import Link from "next/link"
 
 export default function Footer() {
   return (
@@ -46,19 +47,19 @@ export default function Footer() {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">it.support@email.com</span>
+                <span className="text-muted-foreground">sasutanainesponting@gmail.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-muted-foreground" />
-                <span className="text-muted-foreground">+1 (555) 123-4567</span>
+                <span className="text-muted-foreground">+63 993 (554) 1178</span>
               </div>
               <div className="flex gap-4 pt-2">
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Linkedin className="h-5 w-5" />
-                </a>
-                <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                  <Github className="h-5 w-5" />
-                </a>
+                <Link href="#" className="text-muted-foreground hover:text-primary transition-colors">
+                  <User className="h-5 w-5" />
+                </Link>
+                <Link href="https://github.com/Kneez13" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                  <GitBranch className="h-5 w-5" />
+                </Link>
               </div>
             </div>
           </div>

@@ -22,10 +22,8 @@ export class AnimationController {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             this.animatedElements.add(entry.target);
-          } else {
-            // Remove animation when scrolling up to re-trigger on next scroll down
-            entry.target.classList.remove('visible');
           }
+          // Don't remove visible class - keep elements animated once they've been shown
         });
       },
       {
@@ -39,6 +37,9 @@ export class AnimationController {
     
     // Setup page load animation
     this.setupPageLoadAnimation();
+    
+    // Setup page visibility handling
+    this.setupPageVisibilityHandling();
     
     // Observe all elements with scroll animation classes
     this.observeElements();
@@ -88,6 +89,31 @@ export class AnimationController {
     }
 
     requestAnimationFrame(animation);
+  }
+
+  private setupPageVisibilityHandling() {
+    // Handle page visibility changes (when user returns from external site)
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        // Page is now visible, ensure all animated elements are visible
+        this.triggerAnimations();
+      }
+    });
+
+    // Handle window focus (when user returns from external site)
+    window.addEventListener('focus', () => {
+      // Window is now focused, ensure all animated elements are visible
+      this.triggerAnimations();
+    });
+
+    // Handle pageshow event (when user navigates back)
+    window.addEventListener('pageshow', (event) => {
+      // Check if the page is being loaded from cache
+      if (event.persisted) {
+        // Page was loaded from cache, ensure all elements are visible
+        this.triggerAnimations();
+      }
+    });
   }
 
   private setupPageLoadAnimation() {
@@ -141,12 +167,39 @@ export class AnimationController {
 // Initialize animations when DOM is loaded
 export const initAnimations = () => {
   if (typeof window !== 'undefined') {
+    // Force all animated elements to be visible immediately
+    const forceContentVisible = () => {
+      const elements = document.querySelectorAll(
+        '.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale'
+      );
+      elements.forEach(element => {
+        element.classList.add('visible');
+      });
+    };
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         AnimationController.getInstance();
+        // Force content visible immediately after initialization
+        setTimeout(forceContentVisible, 100);
       });
     } else {
       AnimationController.getInstance();
+      // Force content visible immediately
+      setTimeout(forceContentVisible, 100);
     }
+
+    // Also force content visible on page visibility changes
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) {
+        forceContentVisible();
+      }
+    });
+
+    // Force content visible on window focus
+    window.addEventListener('focus', forceContentVisible);
+    
+    // Force content visible on pageshow
+    window.addEventListener('pageshow', forceContentVisible);
   }
 };

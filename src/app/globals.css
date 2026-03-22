@@ -396,4 +396,13 @@
     opacity: 1;
     transform: scale(1);
   }
+
+  /* Force content to be visible to prevent issues when returning from external sites */
+  .scroll-animate.visible,
+  .scroll-animate-left.visible,
+  .scroll-animate-right.visible,
+  .scroll-animate-scale.visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
